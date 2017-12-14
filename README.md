@@ -12,3 +12,6 @@
 #### Redis
 #### Kafka
 #### Sharding-JDBC
+#### Nginx
+
+
