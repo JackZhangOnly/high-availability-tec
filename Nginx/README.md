@@ -25,13 +25,11 @@ tar zxvf nginx-1.6.2.tar
 
 make && make install
 
-cd /root/svr/nginx
+cd /opt/nginx-module
 
 ./sbin/nginx –t
 
 ./sbin/nginx -s reload 重新加载conf文件
-#### 模块添加
-wget http://wiki.nginx.org/images/7/78/Nginx_upstream_hash-0.3.tar.gz
 
 出现的错误：error while loading shared libraries: libpcre.so.1
 
