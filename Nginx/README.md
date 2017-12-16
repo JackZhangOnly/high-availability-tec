@@ -34,6 +34,7 @@ cd /root/svr/nginx
 wget http://wiki.nginx.org/images/7/78/Nginx_upstream_hash-0.3.tar.gz
 
 出现的错误：error while loading shared libraries: libpcre.so.1
-解决办法：添加软链接
+
+解决：添加软链接
 
 ln -s /usr/local/lib/libpcre.so.1 /lib64
