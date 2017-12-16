@@ -16,5 +16,8 @@
 #### Kafka
 #### Sharding-JDBC
 #### Nginx
+- [linux下基本环境配置](https://github.com/JackZhangOnly/high-availability-tec/blob/master/Nginx/1.%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.md)
+
+
 
 
