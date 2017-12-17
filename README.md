@@ -16,8 +16,9 @@
 #### Kafka
 #### Sharding-JDBC
 #### Nginx
-- [centos Linux下基本环境配置](https://github.com/JackZhangOnly/high-availability-tec/blob/master/Nginx/1.%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.md)
+- [centos 下基本环境配置](https://github.com/JackZhangOnly/high-availability-tec/blob/master/Nginx/1.%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.md)
 
+- [负载均衡](https://github.com/JackZhangOnly/high-availability-tec/blob/master/Nginx/2.%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.md)
 
 
 
