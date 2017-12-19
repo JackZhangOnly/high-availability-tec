@@ -21,9 +21,9 @@
 #### Kafka
 #### Sharding-JDBC
 #### ELK
-- [CentOS下ElasticSearch安装](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/1.CentOS%E4%B8%8BElasticSearch%E5%AE%89%E8%A3%85.md)
-- [CentOS下Kibana安装](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/2.CentOS%E4%B8%8BKibana%E5%AE%89%E8%A3%85.md)
-- [CentOS下Logstash安装](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/3.CentOS%E4%B8%8BLogstash%E5%AE%89%E8%A3%85.md)
+- [1.CentOS下ElasticSearch安装](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/1.CentOS%E4%B8%8BElasticSearch%E5%AE%89%E8%A3%85.md)
+- [2.CentOS下Kibana安装](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/2.CentOS%E4%B8%8BKibana%E5%AE%89%E8%A3%85.md)
+- [3.CentOS下Logstash安装](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/3.CentOS%E4%B8%8BLogstash%E5%AE%89%E8%A3%85.md)
 
 
 #### Nginx
