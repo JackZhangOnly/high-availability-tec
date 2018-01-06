@@ -28,6 +28,7 @@
 - [CentOS下ElasticSearch安装](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/1.CentOS%E4%B8%8BElasticSearch%E5%AE%89%E8%A3%85.md)
 - [CentOS下Kibana安装](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/2.CentOS%E4%B8%8BKibana%E5%AE%89%E8%A3%85.md)
 - [CentOS下Logstash安装](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/3.CentOS%E4%B8%8BLogstash%E5%AE%89%E8%A3%85.md)
+- [ES安装head插件](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/4.ES%E5%AE%89%E8%A3%85head%E6%8F%92%E4%BB%B6.md)
 
 
 #### Nginx
