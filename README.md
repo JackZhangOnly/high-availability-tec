@@ -30,7 +30,9 @@
 - [CentOS下Logstash安装](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/3.CentOS%E4%B8%8BLogstash%E5%AE%89%E8%A3%85.md)
 - [ES安装head插件](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/4.ES%E5%AE%89%E8%A3%85head%E6%8F%92%E4%BB%B6.md)
 - [ES集群](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/5.ES%E9%9B%86%E7%BE%A4.md)
-
+- [ES基本操作](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/6.ES%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.md)
+- [ES高级查询](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/7.%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2.md)
+- [SpringBoot集成ES](https://github.com/JackZhangOnly/high-availability-tec/blob/master/ELK/8.SpringBoot%E9%9B%86%E6%88%90ES.md)
 
 #### Nginx
 - [CentOS 下基本环境配置](https://github.com/JackZhangOnly/high-availability-tec/blob/master/Nginx/1.%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.md)
