@@ -2,6 +2,8 @@ package com.jackzhang.bootes.controller;
 
 import com.jackzhang.bootes.common.Constants;
 import com.jackzhang.bootes.common.ResponseData;
+import org.elasticsearch.action.DocWriteResponse;
+import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.transport.TransportClient;
@@ -55,5 +57,15 @@ public class BookController {
         }
 
         return new ResponseData().isOk(0).msg("添加异常");
+    }
+    @RequestMapping(value = "delete.do",method = RequestMethod.POST)
+    public ResponseData delete(@RequestParam(name="id",defaultValue = "") String id){
+
+        DeleteResponse response=this.client.prepareDelete(Constants.INDEX_BOOK,Constants.TYPE_NOVEL,id).get();
+        if (!response.getResult().equals(DocWriteResponse.Result.DELETED)){
+            return new ResponseData().isOk(0).msg("删除失败");
+        }
+        return new ResponseData().isOk(1).msg("删除成功");
+
     }
 }
