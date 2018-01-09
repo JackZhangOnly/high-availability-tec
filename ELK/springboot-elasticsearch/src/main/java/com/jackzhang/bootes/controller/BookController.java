@@ -39,8 +39,7 @@ public class BookController {
     @RequestMapping(value = "add.do",method = RequestMethod.POST)
     public ResponseData add(@RequestParam(name="title") String title, @RequestParam(name = "author") String author,
                             @RequestParam(name = "word_count")int wordCount, @RequestParam(name = "publish_date")
-                                        @DateTimeFormat(pattern = "yyyy-MM--dd HH:mm:ss") Date publishDate){
-
+                                        String publishDate){
         try {
             XContentBuilder contentBuilder= XContentFactory.jsonBuilder().startObject()
                     .field("title",title)
@@ -48,7 +47,7 @@ public class BookController {
                     .field("word_count",wordCount)
                     .field("publish_date",publishDate)
                     .endObject();
-            IndexResponse response=this.client.prepareIndex(Constants.INDEX_BOOK,Constants.TYPE_NOVEL).get();
+            IndexResponse response=this.client.prepareIndex(Constants.INDEX_BOOK,Constants.TYPE_NOVEL).setSource(contentBuilder).get();
             return new ResponseData().isOk(1).msg("添加成功").data(response.getId());
 
         } catch (IOException e) {
