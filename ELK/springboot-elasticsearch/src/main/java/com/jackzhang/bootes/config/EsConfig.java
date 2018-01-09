@@ -27,9 +27,6 @@ public class EsConfig {
 
     private static final Logger LOG = LogManager.getLogger(EsConfig.class);
 
-
-
-
     @Bean
     public TransportClient client(){
         try {
