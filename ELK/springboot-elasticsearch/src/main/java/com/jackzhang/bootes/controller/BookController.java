@@ -2,10 +2,13 @@ package com.jackzhang.bootes.controller;
 
 import com.jackzhang.bootes.common.Constants;
 import com.jackzhang.bootes.common.ResponseData;
+import com.jackzhang.bootes.model.Book;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.update.UpdateRequest;
+import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
@@ -54,9 +57,10 @@ public class BookController {
 
         } catch (IOException e) {
             e.printStackTrace();
+            return new ResponseData().isOk(0).msg("添加异常");
+
         }
 
-        return new ResponseData().isOk(0).msg("添加异常");
     }
     @RequestMapping(value = "delete.do",method = RequestMethod.POST)
     public ResponseData delete(@RequestParam(name="id",defaultValue = "") String id){
@@ -66,6 +70,35 @@ public class BookController {
             return new ResponseData().isOk(0).msg("删除失败");
         }
         return new ResponseData().isOk(1).msg("删除成功");
+
+    }
+    @RequestMapping(value = "update.do",method = RequestMethod.POST)
+    public ResponseData update(Book book){
+
+        try {
+            XContentBuilder contentBuilder= XContentFactory.jsonBuilder().startObject();
+            if (book.getTitle()!=null) {
+                contentBuilder.field("title",book.getTitle());
+            }
+            if (book.getAuthor()!=null){
+                contentBuilder.field("author",book.getAuthor());
+            }
+            if (book.getWordCount()>0){
+                contentBuilder.field("word_count",book.getWordCount());
+            }
+            if (book.getPublicDate()!=null){
+                contentBuilder.field("publish_date",book.getPublicDate());
+            }
+            contentBuilder.endObject();
+
+            UpdateResponse response=this.client.prepareUpdate(Constants.INDEX_BOOK,Constants.TYPE_NOVEL,book.getId()).setDoc(contentBuilder).get();
+            return new ResponseData().isOk(1).msg("更新成功").data(response.getResult().toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseData().isOk(0).msg("更新异常");
+
+        }
 
     }
 }
