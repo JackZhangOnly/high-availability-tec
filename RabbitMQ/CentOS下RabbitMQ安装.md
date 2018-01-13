@@ -108,7 +108,9 @@ rabbitmqctl set_user_tags jackzhang administrator
 
 1.unable to connect to node rabbit@JackZhangLinux: nodedown
 
-1)解决方案：执行如下两条命令：
+解决方案
+
+1)执行如下两条命令：
 
 　　　　# /sbin/service rabbitmq-server stop
 　　　　# /sbin/service rabbitmq-server start
@@ -127,6 +129,15 @@ vim /etc/hosts
  TCP connection succeeded but Erlang distribution failed
 
  Authentication failed (rejected by the remote node), please check the Erlang cookie
+ 
+ 
+ Erlang会生成两个cookie文件
+ 
+ vim /root/.erlang.cookie
+ 
+ vim /var/lib/rabbitmq/.erlang.cookie
+ 
+ 将两者内容改一致即可
 
 
 
