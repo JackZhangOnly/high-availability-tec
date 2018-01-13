@@ -3,15 +3,23 @@ package com.jackzhang.bootes.controller;
 import com.jackzhang.bootes.common.Constants;
 import com.jackzhang.bootes.common.ResponseData;
 import com.jackzhang.bootes.model.Book;
+import com.jackzhang.bootes.model.BookQueryCondition;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.RangeQueryBuilder;
+import org.elasticsearch.search.SearchHit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +28,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Jack
@@ -97,6 +108,45 @@ public class BookController {
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseData().isOk(0).msg("更新异常");
+
+        }
+
+    }
+
+    @RequestMapping(value = "query.do",method = RequestMethod.GET)
+    public ResponseData query(BookQueryCondition condition){
+        try {
+            BoolQueryBuilder boolQueryBuilder=QueryBuilders.boolQuery();
+            if (condition!=null&&condition.getAuthor()!=null){
+                boolQueryBuilder.must(QueryBuilders.matchQuery("author",condition.getAuthor()));
+            }
+            if (condition!=null&&condition.getTitle()!=null){
+                boolQueryBuilder.must(QueryBuilders.matchQuery("title",condition.getTitle()));
+            }
+            RangeQueryBuilder rangeQueryBuilder=QueryBuilders.rangeQuery("word_count").from(condition.getGt_word_count());
+
+            if (condition!=null&&condition.getLt_word_count()>0){
+                rangeQueryBuilder.to(condition.getLt_word_count());
+            }
+            boolQueryBuilder.filter(rangeQueryBuilder);
+
+            SearchRequestBuilder builder=this.client.prepareSearch(Constants.INDEX_BOOK)
+                .setTypes(Constants.TYPE_NOVEL)
+                .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
+                .setQuery(boolQueryBuilder)
+                .setFrom(0)
+                .setSize(10);
+            SearchResponse response=builder.get();
+
+            List<Map<String,Object>> result=new ArrayList<>();
+            for (SearchHit hit:response.getHits()){
+                result.add(hit.getSource());
+            }
+            return new ResponseData().isOk(1).msg("查询成功").data(result);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseData().isOk(0).msg("查询失败");
 
         }
 
