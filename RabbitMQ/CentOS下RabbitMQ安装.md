@@ -40,3 +40,47 @@ vim /etc/profile.d/erlang.sh -->  export PATH=/usr/local/erlang/bin:$PATH
 
 erl（命令完成后显示eshell版本信息即为成功）
 
+#### 安装配置RabbitMQ
+
+cd /opt/rabbitmq
+
+wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.12/rabbitmq-server-generic-unix-3.6.12.tar.xz
+
+tar -xf rabbitmq-server-generic-unix-3.6.12.tar.xz
+
+ln -sv rabbitmq_server-3.6.12/ rabbitmq
+
+--配置环境变量
+
+vim /etc/profile
+
+-->export PATH=$PATH:/opt/rabbitmq/rabbitmq_server-3.6.12/sbin
+
+--开放端口
+
+vim /etc/sysconfig/iptables
+
+````
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 5672 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 15672 -j ACCEPT
+
+````
+
+
+
+#### 配置环境变量
+
+默认网页是不允许访问的，需要增加一个用户修改一下权限
+
+--添加用户
+
+rabbitmqctl add_user hxb hxb
+
+--添加权限
+
+rabbitmqctl set_permissions -p "/" hxb ".*" ".*" ".*"
+
+--修改用户角色
+
+rabbitmqctl set_user_tags hxb administrator
+
