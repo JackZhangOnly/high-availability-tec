@@ -102,3 +102,31 @@ rabbitmqctl set_permissions -p "/" jackzhang ".*" ".*" ".*"
 
 rabbitmqctl set_user_tags jackzhang administrator
 
+
+#### 遇到的问题
+
+
+1.unable to connect to node rabbit@JackZhangLinux: nodedown
+
+1)解决方案：执行如下两条命令：
+
+　　　　# /sbin/service rabbitmq-server stop
+　　　　# /sbin/service rabbitmq-server start
+　　　　# rabbitmqctl status
+
+如果1)不生效，查看hosts文件，看是否配置有问题
+
+2)本人是在hosts下加了如下配置
+
+vim /etc/hosts
+````
+192.168.60.129 JackZhangLinux
+````
+
+2.
+ TCP connection succeeded but Erlang distribution failed
+
+ Authentication failed (rejected by the remote node), please check the Erlang cookie
+
+
+
