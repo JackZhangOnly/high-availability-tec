@@ -66,21 +66,39 @@ vim /etc/sysconfig/iptables
 
 ````
 
+--启动服务
 
+cd /rabbitmq/sbin/
 
-#### 配置环境变量
+./rabbitmq-server -detached
+
+--查看服务状态
+
+./rabbitmqctl status
+
+--关闭服务
+
+ ./rabbitmqctl stop
+ 
+ --启用插件（包含网页客户端）
+ 
+./rabbitmq-plugins enable rabbitmq_management
+
+访问http://localhost:15672即可（guest,guest）
+
+#### 配置账号
 
 默认网页是不允许访问的，需要增加一个用户修改一下权限
 
 --添加用户
 
-rabbitmqctl add_user hxb hxb
+rabbitmqctl add_user jackzhang jackzhang
 
 --添加权限
 
-rabbitmqctl set_permissions -p "/" hxb ".*" ".*" ".*"
+rabbitmqctl set_permissions -p "/" jackzhang ".*" ".*" ".*"
 
 --修改用户角色
 
-rabbitmqctl set_user_tags hxb administrator
+rabbitmqctl set_user_tags jackzhang administrator
 
