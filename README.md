@@ -18,7 +18,7 @@
 #### Redis
 - [CentOS 下基本环境配置](https://github.com/JackZhangOnly/high-availability-tec/blob/master/Redis/1.%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.md)
 - 分布式Session，Spring Session之Redis实现
-- [接口token验证、时效](https://github.com/JackZhangOnly/boot-stream)
+- [登录token生成、接口token验证、时效](https://github.com/JackZhangOnly/boot-stream)
 
 #### RabbitMQ
 - [CentOS 下基本环境配置](https://github.com/JackZhangOnly/high-availability-tec/blob/master/RabbitMQ/CentOS%E4%B8%8BRabbitMQ%E5%AE%89%E8%A3%85.md)
