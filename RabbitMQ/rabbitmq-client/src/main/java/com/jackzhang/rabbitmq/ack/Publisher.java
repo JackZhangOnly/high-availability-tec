@@ -10,6 +10,9 @@ import java.util.TreeSet;
 
 /**
  *  rabbitmq ack
+ *  rabbitmq的消息确认机制分两部分
+ *  一部分是生产端，一部分是消费端
+ *  生产端有两种选择，transaction 和confirm,confirm  的性能要好于transaction
  * Created by Jack on 2018/3/27.
  */
 public class Publisher {
