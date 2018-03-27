@@ -6,6 +6,16 @@ import com.rabbitmq.client.ConnectionFactory;
 
 /**
  * 生产者
+ * 1） RabbitMQ消息模型的核心理念是：发布者（producer）不会直接发送任何消息给队列。事实上
+ * 发布者（producer）甚至不知道消息是否已经被投递到队列。
+ * 2）前面的教程中我们对交换机一无所知，但仍然能够发送消息到队列中。因为我们使用了命名为空字符串("")默认的交换机。
+ * 回想我们之前是如何发布一则消息：
+ * channel.basic_publish(exchange='',
+ * routing_key='hello',
+ * body=message)
+ * exchange参数就是交换机的名称。空字符串代表默认或者匿名交换机：消息将会根据指定的routing_key分发到指定的队列。
+ * 3）当声明交换器的类型的fanout时，routingkey不起作用。
+ *
  * Created by Jack on 2018/3/25.
  */
 public class EmitLog {
