@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 /**
- *
+ *  rabbitmq连接工具类
  * Created by Jack on 2018/3/27.
  */
 public class ConnectionUtil {
