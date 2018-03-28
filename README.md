@@ -21,6 +21,7 @@
 
 #### RabbitMQ
 - [CentOS 下基本环境配置](https://github.com/JackZhangOnly/high-availability-tec/blob/master/RabbitMQ/CentOS%E4%B8%8BRabbitMQ%E5%AE%89%E8%A3%85.md)
+- [RabbitMQ Client使用](https://github.com/JackZhangOnly/high-availability-tec/tree/master/RabbitMQ/rabbitmq-client)
 
 #### Kafka
 #### Sharding-JDBC
